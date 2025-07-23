@@ -17,15 +17,15 @@ return new class extends Migration
             $table->id();
 
             $table->integer('cantidad');
-            $table->float('subtotal');
+            $table->decimal('subtotal', 8, 2);
 
             $table->unsignedBigInteger('id_pedido');     //esta es una relación a la otra tabla
             $table->unsignedBigInteger('id_inventario');
 
             $table->timestamps();
 
-            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('set null');
-            $table->foreign('id_inventario')->references('id')->on('inventarios')->onDelete('set null');
+            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('cascade');
+            $table->foreign('id_inventario')->references('id')->on('inventarios')->onDelete('cascade');
         });
     }
 

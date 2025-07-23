@@ -44,7 +44,7 @@ class EmpleadoController extends Controller
         $request->validate([
             'ci' => 'required',
             'nombre_completo' => 'required',
-            'email' => 'required| string ',
+            'email' => 'required | string ',
             'rol' => 'required | string',
             'email' => 'required | string',
             'id_turno' => 'required|integer|exists:turnos,id',

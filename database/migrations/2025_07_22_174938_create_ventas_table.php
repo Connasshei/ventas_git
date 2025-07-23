@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
 
             $table->date('fecha');
-            $table->float('total');
+            $table->decimal('total', 10, 2);
             $table->unsignedBigInteger('id_pedido')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('set null');
+            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('cascade');
         });
     }
 

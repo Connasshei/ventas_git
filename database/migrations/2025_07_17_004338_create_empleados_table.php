@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->integer('ci')->unique();
+            $table->integer('ci')->unique();    //SIEMPRE MINUSCULAS EN 
             $table->string('nombre_completo');
             $table->string('email')->unique();
 
             $table->string('rol');
             $table->unsignedBigInteger('id_turno')->nullable();     //esta es una relación a la otra tabla
+            //UnsignedBigInteger hace que si o sí entre un entero, sin importar si es texto
 
             $table->timestamps();
 
