@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form action="{{ isset($empleado) ? route('empleados.update', $turno) : route('empleados.store') }}" method="POST">
+<form action="{{ isset($empleado) ? route('empleados.update', $empleado) : route('empleados.store') }}" method="POST">
     @csrf
     @if(isset($empleado))
         @method('PUT')
@@ -15,7 +15,7 @@
 
     <div class="form-group">
         <label>CI</label>
-        <input type="text" name="ci" class="form-control" value="{{ old('CI', $empleado->ci ?? '') }}" required>
+        <input type="text" name="ci" class="form-control" value="{{ old('ci', $empleado->ci ?? '') }}" required>
     </div>
 
     <div class="form-group">

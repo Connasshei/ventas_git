@@ -5,7 +5,7 @@
 
 @section('content_header')
     <h1>Dashboard</h1>
-@stop       //cada section se tiene que cerrar con un stop
+@stop      
 
 @section('content_body')
     <p>Bienvenidos</p>

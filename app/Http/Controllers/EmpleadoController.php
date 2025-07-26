@@ -46,7 +46,6 @@ class EmpleadoController extends Controller
             'nombre_completo' => 'required',
             'email' => 'required | string ',
             'rol' => 'required | string',
-            'email' => 'required | string',
             'id_turno' => 'required|integer|exists:turnos,id',
         ]);
         Empleado::create($request->all());
@@ -91,7 +90,7 @@ class EmpleadoController extends Controller
             'nombre_completo' => 'required',
             'email' => 'required| string',
             'rol' => 'required | string',
-            'id_turno' => 'unsignedBigInteger',
+            'id_turno' => 'required|integer|exists:turnos,id',
         ]);
         
         $empleado->update($request->all());

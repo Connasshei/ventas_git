@@ -17,13 +17,15 @@
             <label>CI</label>
             <input type="text" name="ci" class="form-control" value="{{ old('ci', $empleado->ci ?? '') }}" required>
         </div>
-            <div class="form-group">
+
+        <div class="form-group">
             <label>Nombre Completo</label>
             <input type="text" name="nombre_completo" class="form-control" value="{{ old('nombre_completo', $empleado->nombre_completo ?? '') }}" required>
         </div>
-            <div class="form-group">
+
+        <div class="form-group">
             <label>Email</label>
-            <input type="text" name="email" class="form-control" value="{{ old('emai', $empladi->email ?? '') }}" required>
+            <input type="text" name="email" class="form-control" value="{{ old('email', $empleado->email ?? '') }}" required>
         </div>
 
         <div class="form-group">
@@ -32,9 +34,9 @@
         </div>
             <div class="form-group">
             <label>Id Turno</label>
-            <input type="text" name="nombre_completo" class="form-control" value="{{ old('id_turno', $empleado->id_turno ?? '') }}" required>
+            <input type="text" name="id_turno" class="form-control" value="{{ old('id_turno', $empleado->id_turno ?? '') }}" required>
 
-
+        
         <button type="submit" class="btn btn-success">{{isset($empleado) ? 'Actualizar' : 'Guardar'}}</button>
         <a href="{{ route('empleados.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>

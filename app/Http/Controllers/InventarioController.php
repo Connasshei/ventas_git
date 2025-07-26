@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Turno;
 use Illuminate\Http\Request;
 
-class TurnoController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,9 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        $turnos = Turno::all();
-        return view('turnos.index', compact('turnos'));      //primero carpeta luego 
+        //
+        $inventarios = Inventario::all();
+        return view('inventarios.index', compact('inventarios'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TurnoController extends Controller
     public function create()
     {
         //
-        return view('turnos.create');
+        return view('inventarios.create')
     }
 
     /**
@@ -39,12 +39,14 @@ class TurnoController extends Controller
     {
         //
         $request->validate([
-            'hora_entrada' => 'required',
-            'hora_salida' => 'required',
-            'dias_descanso' => 'required|string|max:100',
+            'producto' => 'required|string|max:100',
+            'stock_actual' => 'required|integer',
+            'stock_minimo' => 'required|integer',
+            'precio' => 'required|decimal(8,2)',
         ]);
-        Turno::create($request->all());
-        return redirect()->route('turnos.index')->with('success', 'Turno creado correctamente');
+        Inventario::create($request->all());
+        return redirect()->route('inventarios.index')->with('success', 'Inventario actualizado correctamente');
+
     }
 
     /**
@@ -64,10 +66,10 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Turno $turno)
+    public function edit(Cliente $cliente)
     {
         //
-        return view('turnos.edit', compact('turno'));
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -77,17 +79,18 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turno $turno)
+    public function update(Request $request, Cliente $cliente)
     {
         //
         $request->validate([
-            'hora_entrada' => 'required',
-            'hora_salida' => 'required',
-            'dias_descanso' => 'required|string|max:100',
+            'producto' => 'required|string|max:100',
+            'stock_actual' => 'required|integer',
+            'stock_minimo' => 'required|integer',
+            'precio' => 'required|decimal(8,2)',
         ]);
-        
-        $turno->update($request->all());
-        return redirect()->route('turnos.index')->with('success', 'Turno actualizado correctamente');
+        $inventario->create($request->all());
+        return redirect()->route('inventarios.index')->with('success', 'Inventario actualizado correctamente');
+
     }
 
     /**
@@ -96,10 +99,10 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turno $turno)
+    public function destroy($id)
     {
         //
-        $turno->delete();
-        return redirect()->route('turnos.index')->with('success', 'Turno eliminado correctamente');
+        $inventario->delete();
+        return redirect()->route('inventarios.index')->with('success', 'Objeto de inventario eliminado correctamente');
     }
 }

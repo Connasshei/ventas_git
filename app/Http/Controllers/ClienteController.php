@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Turno;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class TurnoController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        $turnos = Turno::all();
-        return view('turnos.index', compact('turnos'));      //primero carpeta luego 
+        //
+        $clientes = Cliente::all();
+        return view('clientes.index', compact('clientes'));
     }
 
     /**
@@ -26,7 +27,7 @@ class TurnoController extends Controller
     public function create()
     {
         //
-        return view('turnos.create');
+        return view('clientes.create');
     }
 
     /**
@@ -39,12 +40,14 @@ class TurnoController extends Controller
     {
         //
         $request->validate([
-            'hora_entrada' => 'required',
-            'hora_salida' => 'required',
-            'dias_descanso' => 'required|string|max:100',
+            'ci' => 'required|integer',
+            'nombre_completo' => 'required|string|max:100',
+            'email' => 'required|email|unique:clientes,email',
+            'telefono' => 'required|integer',
+            'fecha_nacimiento' => 'required|date',
         ]);
-        Turno::create($request->all());
-        return redirect()->route('turnos.index')->with('success', 'Turno creado correctamente');
+        Cliente::create($request->all());
+        return redirect()->route('clientes.index')->with('success', 'Cliente registrado correctamente');
     }
 
     /**
@@ -64,10 +67,10 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Turno $turno)
+    public function edit(Cliente $cliente)
     {
         //
-        return view('turnos.edit', compact('turno'));
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -77,17 +80,19 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turno $turno)
+    public function update(Request $request, Cliente $cliente)
     {
         //
         $request->validate([
-            'hora_entrada' => 'required',
-            'hora_salida' => 'required',
-            'dias_descanso' => 'required|string|max:100',
+            'ci' => 'required|integer',
+            'nombre_completo' => 'required|string|max:100',
+            'email' => 'required|email|unique:clientes,email',
+            'telefono' => 'required|integer',
+            'fecha_nacimiento' => 'required|date',
         ]);
         
-        $turno->update($request->all());
-        return redirect()->route('turnos.index')->with('success', 'Turno actualizado correctamente');
+        $cliente->update($request->all());
+        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado correctamente');
     }
 
     /**
@@ -96,10 +101,10 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turno $turno)
+    public function destroy(Cliente $cliente)
     {
         //
-        $turno->delete();
-        return redirect()->route('turnos.index')->with('success', 'Turno eliminado correctamente');
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente');
     }
 }

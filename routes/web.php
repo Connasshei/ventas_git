@@ -6,6 +6,8 @@ class TurnoController extends Controller { }
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;        //con esto le estas diciendo que vamos a usar estas rutas de controladores
 use App\Http\Controllers\TurnoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\InventarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +29,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('turnos', TurnoController::class); //apuntar carpeta, poner controlador
 Route::resource('empleados', EmpleadoController::class);
+Route::resource('clientes', ClienteController::class);
+Route::resource('inventarios', InventarioController::class);
