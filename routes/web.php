@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpleadoController;        //con esto le estas diciendo
 use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\PedidoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,4 @@ Route::resource('turnos', TurnoController::class); //apuntar carpeta, poner cont
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('inventarios', InventarioController::class);
+Route::resource('pedidos', PedidoController::class);

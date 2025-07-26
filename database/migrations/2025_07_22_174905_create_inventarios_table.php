@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('producto')->unique();
             $table->integer('stock_anual');
             $table->integer('stock_minimo');
-            $table->decimal('preio', 8, 2);         //8 es la cantidad de enteros, 2 decimales máx
+            $table->decimal('precio', 8, 2);         //8 es la cantidad de enteros, 2 decimales máx
 
             $table->timestamps();
         });

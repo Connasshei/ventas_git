@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventario;
+
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
-class InventarioController extends Controller
+class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class InventarioController extends Controller
     public function index()
     {
         //
-        $inventarios = Inventario::all();
-        return view('inventarios.index', compact('inventarios'));
+        $pedidos = Pedido::all();
+        return view('pedidos.index', compact('pedidos'));
     }
 
     /**
@@ -27,7 +28,7 @@ class InventarioController extends Controller
     public function create()
     {
         //
-        return view('inventarios.create');
+        return view('pedidos.create');
     }
 
     /**
@@ -40,14 +41,12 @@ class InventarioController extends Controller
     {
         //
         $request->validate([
-            'producto' => 'required|string|max:100',
-            'stock_anual' => 'required|integer',
-            'stock_minimo' => 'required|integer',
-            'precio' => 'required|numeric',
+            'estado' => 'required|string|max:50',
+            'fecha' => 'required|date',
+            'id_cliente' => 'required|integer|exists:clientes,id',
         ]);
-        Inventario::create($request->all());
-        return redirect()->route('inventarios.index')->with('success', 'Inventario actualizado correctamente');
-
+        Pedido::create($request->all());
+        return redirect()->route('pedidos.index')->with('success', 'Pedido registrado correctamente');
     }
 
     /**
@@ -67,10 +66,10 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventario $inventario)
+    public function edit(Pedido $pedido)
     {
         //
-        return view('inventarios.edit', compact('inventario'));
+        return view('pedidos.edit', compact('pedido'));
     }
 
     /**
@@ -80,17 +79,16 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, Pedido $pedido)
     {
         //
         $request->validate([
-            'producto' => 'required|string|max:100',
-            'stock_anual' => 'required|integer',
-            'stock_minimo' => 'required|integer',
-            'precio' => 'required|numeric',
+            'estado' => 'required|string|max:50',
+            'fecha' => 'required|date',
+            'id_cliente' => 'required|integer|exists:clientes,id',
         ]);
-        $inventario->update($request->all());
-        return redirect()->route('inventarios.index')->with('success', 'Inventario actualizado correctamente');
+        $pedido->update($request->all());
+        return redirect()->route('pedidos.index')->with('success', 'Pedido registrado correctamente');
 
     }
 
@@ -100,10 +98,10 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventario $inventario)
+    public function destroy(Pedido $pedido)
     {
         //
-        $inventario->delete();
-        return redirect()->route('inventarios.index')->with('success', 'Objeto de inventario eliminado correctamente');
+        $pedido->delete();
+        return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado correctamente');
     }
 }
