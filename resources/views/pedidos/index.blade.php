@@ -25,7 +25,7 @@
                     <td>{{$pedido->id}}</td>
                     <td>{{$pedido->fecha}}</td>
                     <td>{{$pedido->estado}}</td>
-                    <td>{{$pedido->id_cliente}}</td>
+                    <td>{{$pedido->cliente->nombre_completo ?? 'Sin Registro'}}</td>
                     <td>
                         <a href="{{route('pedidos.edit', $pedido)}}" class="btn btn-warning btn-sm">Editar</a>
                         <form action="{{route('pedidos.destroy', $pedido)}}" method="POST" style="display: inline-block;">

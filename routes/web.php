@@ -9,6 +9,8 @@ use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\VentaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +35,5 @@ Route::resource('empleados', EmpleadoController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('inventarios', InventarioController::class);
 Route::resource('pedidos', PedidoController::class);
+Route::resource('detalle_pedidos', DetallePedidoController::class);
+Route::resource('ventas', VentaController::class);

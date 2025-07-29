@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Pedido;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
-class PedidoController extends Controller
+class VentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class PedidoController extends Controller
     public function index()
     {
         //
-        $pedidos = Pedido::with('cliente')->get();
-        return view('pedidos.index', compact('pedidos'));
+        $ventas = Venta::with('pedido.cliente')->get();
+        return view('ventas.index', compact('ventas')); 
     }
 
     /**
@@ -28,7 +27,8 @@ class PedidoController extends Controller
     public function create()
     {
         //
-        return view('pedidos.create');
+        
+        return view('ventas.create');
     }
 
     /**
@@ -41,12 +41,12 @@ class PedidoController extends Controller
     {
         //
         $request->validate([
-            'estado' => 'required|string|max:50',
             'fecha' => 'required|date',
-            'id_cliente' => 'required|integer|exists:clientes,id',
+            'total' => 'required|numeric',
+            'id_pedido' => 'required|integer|exists:pedidos,id',
         ]);
-        Pedido::create($request->all());
-        return redirect()->route('pedidos.index')->with('success', 'Pedido registrado correctamente');
+        Venta::create($request->all());
+        return redirect()->route('ventas.index')->with('success', 'Venta creada correctamente');
     }
 
     /**
@@ -66,10 +66,10 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedido $pedido)
+    public function edit(Venta $venta)
     {
         //
-        return view('pedidos.edit', compact('pedido'));
+        return view('venta.edit', compact('venta'));
     }
 
     /**
@@ -79,17 +79,16 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedido $pedido)
+    public function update(Request $request, Venta $venta)
     {
         //
         $request->validate([
-            'estado' => 'required|string|max:50',
             'fecha' => 'required|date',
-            'id_cliente' => 'required|integer|exists:clientes,id',
+            'total' => 'required|numeric',
+            'id_pedido' => 'required|integer|exists:pedidos,id',
         ]);
-        $pedido->update($request->all());
-        return redirect()->route('pedidos.index')->with('success', 'Pedido registrado correctamente');
-
+        $venta->update($request->all());
+        return redirect()->route('ventas.index')->with('success', 'Venta creada correctamente');
     }
 
     /**
@@ -98,10 +97,10 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedido $pedido)
+    public function destroy(Venta $venta)
     {
         //
-        $pedido->delete();
-        return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado correctamente');
+        $venta->delete();
+        return redirect()->route('ventas.index')->with('success', 'Venta eliminada correctamente');
     }
 }
