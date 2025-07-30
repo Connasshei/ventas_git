@@ -17,7 +17,7 @@
                 <th>Cantidad</th>
                 <th>Subtotal</th>
                 <th>Estado Pedido</th>
-                <th>ID Inventario</th>
+                <th>Inventario</th>
             </tr>
         </thead>
         <tbody>

@@ -14,11 +14,10 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>CI</th>
-                <th>Nombre Completo</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>id_turno</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Nombre Cliente</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
