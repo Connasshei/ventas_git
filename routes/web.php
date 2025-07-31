@@ -11,6 +11,8 @@ use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\DetallePedidoController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\SolicitudMateriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +39,6 @@ Route::resource('inventarios', InventarioController::class);
 Route::resource('pedidos', PedidoController::class);
 Route::resource('detalle_pedidos', DetallePedidoController::class);
 Route::resource('ventas', VentaController::class);
+
+Route::resource('estudiantes', EstudianteController::class);
+Route::resource('solicitud_materias', SolicitudMateriaController::class);

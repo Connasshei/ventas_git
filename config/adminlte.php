@@ -357,6 +357,16 @@ return [
             'url' => 'ventas',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Estudiantes',
+            'url' => 'estudiantes',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Solicitud Materias',
+            'url' => 'solicitud_materias',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
     ],
 
     /*

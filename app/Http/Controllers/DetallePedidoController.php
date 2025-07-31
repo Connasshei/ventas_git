@@ -110,6 +110,6 @@ class DetallePedidoController extends Controller
     {
         //
         $detalle_pedido->delete();
-        return redirect()->route('detalle_pedidos.index')->with('success', 'Empleado eliminado correctamente');
+        return redirect()->route('detalle_pedidos.index')->with('success', 'Detalle eliminado correctamente');
     }
 }
